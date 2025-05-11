@@ -45,6 +45,6 @@
     }
   },
   "files": {
-    "ignore": ["node_modules", "dist", "@types"]
+    "ignore": ["node_modules", "dist", "data"]
   }
 }
