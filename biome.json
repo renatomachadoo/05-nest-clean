@@ -22,7 +22,8 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "useImportType": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
@@ -40,7 +41,8 @@
         "noBannedTypes": "off",
         "noStaticOnlyClass": "off",
         "noForEach": "off",
-        "noThisInStatic": "off"
+        "noThisInStatic": "off",
+        "noUselessConstructor": "off"
       }
     }
   },
