@@ -32,7 +32,8 @@
         "noArrayIndexKey": "off",
         "noEmptyInterface": "off",
         "noExplicitAny": "off",
-        "noImplicitAnyLet": "off"
+        "noImplicitAnyLet": "off",
+        "noMisleadingCharacterClass": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
