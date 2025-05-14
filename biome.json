@@ -47,6 +47,9 @@
         "noForEach": "off",
         "noThisInStatic": "off",
         "noUselessConstructor": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "error"
       }
     }
   },

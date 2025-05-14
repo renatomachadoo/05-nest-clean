@@ -1,9 +1,11 @@
-import { type Either, right } from '@/core/either'
+import { type Either, left, right } from '@/core/either'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Question } from '../../enterprise/entities/question'
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
 import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list'
-import type { QuestionsRepository } from '../repositories/questions-repository'
+import { QuestionsRepository } from '../repositories/questions-repository'
+import { Injectable } from '@nestjs/common'
+import { QuestionAlreadyExistsError } from './errors/question-already-exists-error'
 
 interface CreateQuestionUseCaseRequest {
   authorId: string
@@ -13,12 +15,13 @@ interface CreateQuestionUseCaseRequest {
 }
 
 type CreateQuestionUseCaseResponse = Either<
-  null,
+  QuestionAlreadyExistsError,
   {
     question: Question
   }
 >
 
+@Injectable()
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: QuestionsRepository) {}
 
@@ -33,6 +36,14 @@ export class CreateQuestionUseCase {
       title,
       content,
     })
+
+    const questionWithSameSlug = await this.questionsRepository.findBySlug(
+      question.slug.value
+    )
+
+    if (questionWithSameSlug) {
+      return left(new QuestionAlreadyExistsError())
+    }
 
     const questionAttachments = attachmentsIds.map(attachmentId => {
       return QuestionAttachment.create({
