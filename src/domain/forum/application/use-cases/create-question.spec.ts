@@ -28,15 +28,20 @@ describe('Create Question', () => {
     })
 
     expect(result.isRight()).toEqual(true)
-    expect(inMemoryQuestionsRepository.items[0]).toEqual(result.value?.question)
-    expect(
-      inMemoryQuestionsRepository.items[0].attachments.currentItems
-    ).toHaveLength(2)
-    expect(
-      inMemoryQuestionsRepository.items[0].attachments.currentItems
-    ).toEqual([
-      expect.objectContaining({ attachmentId: new UniqueEntityId('1') }),
-      expect.objectContaining({ attachmentId: new UniqueEntityId('2') }),
-    ])
+
+    if (result.isRight()) {
+      expect(inMemoryQuestionsRepository.items[0]).toEqual(
+        result.value.question
+      )
+      expect(
+        inMemoryQuestionsRepository.items[0].attachments.currentItems
+      ).toHaveLength(2)
+      expect(
+        inMemoryQuestionsRepository.items[0].attachments.currentItems
+      ).toEqual([
+        expect.objectContaining({ attachmentId: new UniqueEntityId('1') }),
+        expect.objectContaining({ attachmentId: new UniqueEntityId('2') }),
+      ])
+    }
   })
 })
