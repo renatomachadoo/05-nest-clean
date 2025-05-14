@@ -9,18 +9,9 @@ import { JwtEncrypter } from './jwt-encrypter'
 
 @Module({
   providers: [
-    {
-      provide: Encrypter,
-      useClass: JwtEncrypter,
-    },
-    {
-      provide: HashComparer,
-      useClass: BcryptHasher,
-    },
-    {
-      provide: HashGenerator,
-      useClass: BcryptHasher,
-    },
+    { provide: Encrypter, useClass: JwtEncrypter },
+    { provide: HashComparer, useClass: BcryptHasher },
+    { provide: HashGenerator, useClass: BcryptHasher },
   ],
   exports: [Encrypter, HashComparer, HashGenerator],
 })
