@@ -2,8 +2,9 @@ import { type Either, left, right } from '@/core/either'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 import { QuestionComment } from '../../enterprise/entities/question-comment'
-import type { QuestionsCommentsRepository } from '../repositories/questions-comments-repository'
-import type { QuestionsRepository } from '../repositories/questions-repository'
+import { QuestionsCommentsRepository } from '../repositories/questions-comments-repository'
+import { QuestionsRepository } from '../repositories/questions-repository'
+import { Injectable } from '@nestjs/common'
 
 interface CommentOnQuestionUseCaseRequest {
   authorId: string
@@ -18,6 +19,7 @@ type CommentOnQuestionUseCaseResponse = Either<
   }
 >
 
+@Injectable()
 export class CommentOnQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
