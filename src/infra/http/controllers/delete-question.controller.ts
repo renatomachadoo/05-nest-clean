@@ -1,4 +1,4 @@
-import { DeleteQuestionUseCase } from './../../../domain/forum/application/use-cases/delete-question'
+import { DeleteQuestionUseCase } from '../../../domain/forum/application/use-cases/delete-question'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import {
