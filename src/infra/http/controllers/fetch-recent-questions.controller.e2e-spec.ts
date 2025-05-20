@@ -54,8 +54,6 @@ describe('Fetch Recent Questions (E2E)', () => {
       .set('Authorization', `Bearer ${accessToken}`)
       .send()
 
-    console.log(response.body)
-
     expect(response.statusCode).toBe(200)
     expect(response.body.questions).toHaveLength(2)
     expect(response.body).toEqual({
