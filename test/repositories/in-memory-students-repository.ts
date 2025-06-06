@@ -1,7 +1,7 @@
 import { StudentsRepository } from '@/domain/forum/application/repositories/students-repository'
 import { Student } from '@/domain/forum/enterprise/entities/student'
 
-export class InMemoryStudensRepository implements StudentsRepository {
+export class InMemoryStudentsRepository implements StudentsRepository {
   public items: Student[] = []
 
   async findByEmail(email: string): Promise<Student | null> {
