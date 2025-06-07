@@ -1,11 +1,11 @@
-import {
-  Question as PrismaQuestion,
-  User as PrismaUser,
-  Attachment as PrismaAttachment,
-} from 'generated/prisma'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
+import {
+  Attachment as PrismaAttachment,
+  Question as PrismaQuestion,
+  User as PrismaUser,
+} from 'generated/prisma'
 import { PrismaAttachmentMapper } from './prisma-attachment-mapper'
 
 type PrismaQuestionDetails = PrismaQuestion & {

@@ -1,9 +1,9 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { makeQuestionComment } from 'test/factories/make-question-comment'
-import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-questions-comments-repository'
-import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
-import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 import { makeStudent } from 'test/factories/make-student'
+import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-questions-comments-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
+import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
 
 let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionsCommentsRepository: InMemoryQuestionsCommentsRepository

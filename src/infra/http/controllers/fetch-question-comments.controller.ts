@@ -1,14 +1,14 @@
-import { FetchQuestionCommentsUseCase } from './../../../domain/forum/application/use-cases/fetch-question-comments'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
   BadRequestException,
   Controller,
   Get,
-  Query,
   Param,
+  Query,
 } from '@nestjs/common'
 import { z } from 'zod'
 import { CommentWithAuthorPresenter } from '../presenters/comment-with-author-presenter'
+import { FetchQuestionCommentsUseCase } from './../../../domain/forum/application/use-cases/fetch-question-comments'
 
 const pageQueryParamSchema = z
   .string()

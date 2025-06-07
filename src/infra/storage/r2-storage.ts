@@ -1,12 +1,12 @@
 import {
-  Uploader,
   UploadParams,
+  Uploader,
 } from '@/domain/forum/application/storage/uploader'
 
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
-import { EnvService } from '../env/env.service'
 import { randomUUID } from 'node:crypto'
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { Injectable } from '@nestjs/common'
+import { EnvService } from '../env/env.service'
 
 @Injectable()
 export class R2Storage implements Uploader {

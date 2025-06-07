@@ -4,6 +4,7 @@ import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory
 import { InMemoryAnswersCommentsRepository } from 'test/repositories/in-memory-answers-comments-repository'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
 import { InMemoryNotificationsRepository } from 'test/repositories/in-memory-notifications-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 import { waitFor } from 'test/utils/wait-for'
 import type { MockInstance } from 'vitest'
 import {
@@ -12,7 +13,6 @@ import {
   type SendNotificationUseCaseResponse,
 } from '../use-cases/send-notification'
 import { OnAnswerCommentCreated } from './on-answer-comment-created'
-import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository

@@ -1,7 +1,6 @@
 import { DomainEvents } from '@/core/events/domain-events'
 import type { EventHandler } from '@/core/events/event-handler'
 import type { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
-import type { AnswerCreatedEvent } from '@/domain/forum/enterprise/events/answer-created-event'
 import type { SendNotificationUseCase } from '../use-cases/send-notification'
 import { QuestionBestAnswerChosenEvent } from './../../../forum/enterprise/events/question-best-answer-chosen-event'
 

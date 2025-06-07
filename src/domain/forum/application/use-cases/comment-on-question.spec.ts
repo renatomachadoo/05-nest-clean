@@ -1,10 +1,10 @@
 import { makeQuestion } from 'test/factories/make-question'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-questions-comments-repository'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
-import { CommentOnQuestionUseCase } from './comment-on-question'
 import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
-import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
+import { CommentOnQuestionUseCase } from './comment-on-question'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionsCommentsRepository: InMemoryQuestionsCommentsRepository

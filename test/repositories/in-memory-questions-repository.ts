@@ -3,9 +3,9 @@ import type { PaginationParams } from '@/core/repositories/pagination-params'
 import type { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import type { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
-import { InMemoryStudentsRepository } from './in-memory-students-repository'
 import { InMemoryAttachmentsRepository } from './in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from './in-memory-question-attachments-repository'
+import { InMemoryStudentsRepository } from './in-memory-students-repository'
 
 export class InMemoryQuestionsRepository implements QuestionsRepository {
   public items: Question[] = []

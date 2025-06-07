@@ -1,13 +1,13 @@
+import { makeAttachment } from 'test/factories/make-attachment'
 import { makeQuestion } from 'test/factories/make-question'
+import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
+import { makeStudent } from 'test/factories/make-student'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 import { Slug } from '../../enterprise/entities/value-objects/slug'
 import { GetQuestionBySlugUseCase } from './get-question-by-slug'
-import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
-import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
-import { makeStudent } from 'test/factories/make-student'
-import { makeAttachment } from 'test/factories/make-attachment'
-import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository

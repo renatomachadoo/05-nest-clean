@@ -1,3 +1,6 @@
+import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
+import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error'
+import { Public } from '@/infra/auth/public'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
   BadRequestException,
@@ -6,9 +9,6 @@ import {
 } from '@nestjs/common'
 import { Body, Controller, Post } from '@nestjs/common'
 import { z } from 'zod'
-import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
-import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error'
-import { Public } from '@/infra/auth/public'
 
 const authenticateBodySchema = z.object({
   email: z.string().email(),

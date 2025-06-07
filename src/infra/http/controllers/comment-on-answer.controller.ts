@@ -1,3 +1,4 @@
+import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment-on-answer'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
@@ -9,7 +10,6 @@ import {
   Post,
 } from '@nestjs/common'
 import { z } from 'zod'
-import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment-on-answer'
 
 const commentOnAnswerBodySchema = z.object({
   content: z.string(),

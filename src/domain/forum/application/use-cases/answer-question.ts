@@ -1,10 +1,10 @@
 import { type Either, right } from '@/core/either'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
+import { Injectable } from '@nestjs/common'
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list'
 import { AnswersRepository } from '../repositories/answers-repository'
-import { Injectable } from '@nestjs/common'
 
 interface AnswerQuestionUseCaseRequest {
   instructorId: string

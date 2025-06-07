@@ -1,4 +1,3 @@
-import { DeleteAnswerUseCase } from '../../../domain/forum/application/use-cases/delete-answer'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import {
@@ -8,6 +7,7 @@ import {
   HttpCode,
   Param,
 } from '@nestjs/common'
+import { DeleteAnswerUseCase } from '../../../domain/forum/application/use-cases/delete-answer'
 
 @Controller('/answers/:id')
 export class DeleteAnswerController {

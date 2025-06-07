@@ -1,6 +1,6 @@
-import { Prisma, Attachment as PrismaAttachment } from 'generated/prisma'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
+import { Prisma, Attachment as PrismaAttachment } from 'generated/prisma'
 
 export class PrismaAnswerAttachmentMapper {
   static toDomain(raw: PrismaAttachment): AnswerAttachment {
