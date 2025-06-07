@@ -3,6 +3,7 @@ import { config } from 'dotenv'
 import { execSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { PrismaClient } from 'generated/prisma'
+import { DomainEvents } from '@/core/events/domain-events'
 
 config({ path: '.env', override: true })
 config({ path: '.env.test', override: true })
@@ -28,12 +29,12 @@ beforeAll(async () => {
 
   process.env.DATABASE_URL = databaseUrl
 
+  DomainEvents.shouldRun = false
+
   execSync('pnpm prisma migrate deploy')
 }, 30000)
 
 afterAll(async () => {
-  console.log(process.env.DATABASE_URL, schemaId)
-
   await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schemaId}" CASCADE`)
   await prisma.$disconnect()
 })
