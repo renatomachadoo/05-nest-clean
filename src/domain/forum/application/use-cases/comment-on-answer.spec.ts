@@ -3,10 +3,12 @@ import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory
 import { InMemoryAnswersCommentsRepository } from 'test/repositories/in-memory-answers-comments-repository'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
 import { CommentOnAnswerUseCase } from './comment-on-answer'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswersCommentsRepository: InMemoryAnswersCommentsRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let sut: CommentOnAnswerUseCase
 
 describe('Comment on answer', () => {
@@ -17,7 +19,11 @@ describe('Comment on answer', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository
     )
-    inMemoryAnswersCommentsRepository = new InMemoryAnswersCommentsRepository()
+
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAnswersCommentsRepository = new InMemoryAnswersCommentsRepository(
+      inMemoryStudentsRepository
+    )
     sut = new CommentOnAnswerUseCase(
       inMemoryAnswersRepository,
       inMemoryAnswersCommentsRepository
