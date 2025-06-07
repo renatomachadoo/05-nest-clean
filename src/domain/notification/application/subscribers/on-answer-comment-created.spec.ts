@@ -12,12 +12,14 @@ import {
   type SendNotificationUseCaseResponse,
 } from '../use-cases/send-notification'
 import { OnAnswerCommentCreated } from './on-answer-comment-created'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryNotificationsRepository: InMemoryNotificationsRepository
 let sendNotificationUseCase: SendNotificationUseCase
 let inMemoryAnswersCommentsRepository: InMemoryAnswersCommentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 
 type SendNotificationFunction = (
   request: SendNotificationUseCaseRequest
@@ -32,7 +34,12 @@ describe('On answer comment created', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository
     )
-    inMemoryAnswersCommentsRepository = new InMemoryAnswersCommentsRepository()
+
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+
+    inMemoryAnswersCommentsRepository = new InMemoryAnswersCommentsRepository(
+      inMemoryStudentsRepository
+    )
     inMemoryNotificationsRepository = new InMemoryNotificationsRepository()
 
     sendNotificationUseCase = new SendNotificationUseCase(

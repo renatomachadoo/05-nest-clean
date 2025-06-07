@@ -12,12 +12,16 @@ import {
   type SendNotificationUseCaseResponse,
 } from '../use-cases/send-notification'
 import { OnQuestionCommentCreated } from './on-question-comment-created'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryNotificationsRepository: InMemoryNotificationsRepository
 let sendNotificationUseCase: SendNotificationUseCase
 let inMemoryQuestionsCommentsRepository: InMemoryQuestionsCommentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 
 type SendNotificationFunction = (
   request: SendNotificationUseCaseRequest
@@ -29,11 +33,19 @@ describe('On question comment created', () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
+
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
-      inMemoryQuestionAttachmentsRepository
+      inMemoryQuestionAttachmentsRepository,
+      inMemoryStudentsRepository,
+      inMemoryAttachmentsRepository
     )
+
     inMemoryQuestionsCommentsRepository =
-      new InMemoryQuestionsCommentsRepository()
+      new InMemoryQuestionsCommentsRepository(inMemoryStudentsRepository)
     inMemoryNotificationsRepository = new InMemoryNotificationsRepository()
 
     sendNotificationUseCase = new SendNotificationUseCase(
