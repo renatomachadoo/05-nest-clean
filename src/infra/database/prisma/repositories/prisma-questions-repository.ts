@@ -123,7 +123,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       this.questionAttachmentsRepository.createMany(
         question.attachments.getNewItems()
       ),
-      this.cache.delete(`question:${question.slug}:details`),
+      this.cache.delete(`question:${question.slug.value}:details`),
     ])
 
     DomainEvents.dispatchEventsForAggregate(question.id)
