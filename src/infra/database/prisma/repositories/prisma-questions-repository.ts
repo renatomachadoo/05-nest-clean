@@ -1,10 +1,10 @@
+import { PrismaQuestionDetailsMapper } from './../mappers/prisma-question-details-mapper'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question-attachments-repository'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 import { Injectable } from '@nestjs/common'
-import { PrismaQuestionDetailsMapper } from '../mappers/prisma-question-details-mapper'
 import { PrismaQuestionMapper } from '../mappers/prisma-question-mapper'
 import { PrismaService } from '../prisma.service'
 import { DomainEvents } from '@/core/events/domain-events'
@@ -52,7 +52,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     if (cacheHit) {
       const cachedData = JSON.parse(cacheHit)
 
-      return cachedData
+      return PrismaQuestionDetailsMapper.toDomain(cachedData)
     }
 
     const question = await this.prisma.question.findUnique({
@@ -69,12 +69,9 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       return null
     }
 
-    const questionDetails = PrismaQuestionDetailsMapper.toDomain(question)
+    await this.cache.set(`question:${slug}:details`, JSON.stringify(question))
 
-    await this.cache.set(
-      `question:${slug}:details`,
-      JSON.stringify(questionDetails)
-    )
+    const questionDetails = PrismaQuestionDetailsMapper.toDomain(question)
 
     return questionDetails
   }
